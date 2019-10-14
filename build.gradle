@@ -29,7 +29,9 @@ jacoco {
 
 jacocoTestReport {
     reports {
-        xml.enabled false
+        xml.enabled true
+        xml.destination file("${buildDir}/reports/jacoco/report.xml")
+
         csv.enabled false
         html.destination file("${buildDir}/jacocoHtml")
     }
@@ -40,8 +42,6 @@ sonarqube {
         property 'sonar.projectKey', 'jaeyeonling_korean-syllable-tokenizer'
     }
 }
-
-check.dependsOn jacocoTestReport
 
 test {
     useJUnitPlatform()
