@@ -1,0 +1,73 @@
+plugins {
+    id 'java'
+    id 'idea'
+    id 'jacoco'
+    id 'org.sonarqube' version '2.7.1'
+}
+
+group 'com.jaeyeonling'
+version '0.0.1'
+
+ext {
+    javaVersion = JavaVersion.VERSION_12
+
+    versions = [
+            'junit'             : '5.5.+',
+            'junit-platform'    : '1.5.+',
+            'assertj'           : '3.13.+',
+            'lombok'            : '1.18.+',
+    ]
+}
+
+sourceCompatibility = javaVersion
+targetCompatibility = javaVersion
+
+jacoco {
+    toolVersion = "0.8.4"
+    reportsDir = file("$buildDir/customJacocoReportDir")
+}
+
+jacocoTestReport {
+    reports {
+        xml.enabled false
+        csv.enabled false
+        html.destination file("${buildDir}/jacocoHtml")
+    }
+}
+
+sonarqube {
+    properties {
+        property 'sonar.projectKey', 'jaeyeonling_simple-di-container'
+    }
+}
+
+check.dependsOn jacocoTestReport
+
+test {
+    useJUnitPlatform()
+}
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // Lombok
+    compileOnly(group: 'org.projectlombok', name: 'lombok', version: versions['lombok'])
+    annotationProcessor(group: 'org.projectlombok', name: 'lombok', version: versions['lombok'])
+    testCompileOnly(group: 'org.projectlombok', name: 'lombok', version: versions['lombok'])
+    testAnnotationProcessor(group: 'org.projectlombok', name: 'lombok', version: versions['lombok'])
+
+    // Junit
+    testImplementation(group: 'org.junit.platform', name: 'junit-platform-commons', version: versions['junit-platform'])
+    testImplementation(group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: versions['junit'])
+    testImplementation(group: 'org.junit.jupiter', name: 'junit-jupiter-params', version: versions['junit'])
+    testRuntimeOnly(group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: versions['junit'])
+    testImplementation(group: 'org.assertj', name: 'assertj-core', version: versions['assertj'])
+}
