@@ -37,7 +37,7 @@ jacocoTestReport {
 
 sonarqube {
     properties {
-        property 'sonar.projectKey', 'jaeyeonling_simple-di-container'
+        property 'sonar.projectKey', 'jaeyeonling_korean-syllable-tokenizer'
     }
 }
 
