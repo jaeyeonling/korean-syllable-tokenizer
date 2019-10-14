@@ -1,4 +1,5 @@
 language: java
+dist: trusty
 sudo: false
 
 jdk:
@@ -18,5 +19,6 @@ after_success:
 addons:
   sonarcloud:
     organization: "jaeyeonling-github"
+
     token:
       secure: "Cm2Q7ABglBOHEWfsQJxel6IbYtTfQrdvUpP143aRlCzorcxPfH3pw9DBzr78UfzMSmJSLh6KQLR/ajwv9A336KPqhPe0NEHIcnHMaYq75Acdxlv73qSew3di8ZRqLJS3cwUQj5mcG7gQSaffwIrhd3+pX5SeyOzq+CkG2DLWvj1pm+xxe7cKCwde9FYpHu8+6A8G+cbJwSmLAyzdTTvX4OQoiIk1ssuslMdZk9bF0u+N5StRQWdp4vM47zZYeAtMS28+1injFO1CaB+4hltTeUZ27jn0+h7mKYNkGkx+Dubuh1y28vraGHI/EHfSgh14/5HrHr/f1crYsuBEfk/f7s+EdAuzwsg+NisNUXL4nc9xC83iJG/lacZ4vnpQ+Xy4Ho2yzDnHBeUsYhh4DSr0EBj0JaK6dSBN2YwVMDQZpPd23/6FRmWCyjYRiCN4c4D/jShNspKkhVB6TlwxOG2LqOAvRBfTWvWC3kEHjGSTACsiqS2vV2LHoh9BI3Kdd0ZNNW6Lzjs6GfT8u0PYNBLaJ8gHCqzF7VsjcsyxqUlGtVRN0me3/rdNE5CPUg+sytjhDklIQDiHnPuBxfpnXWZPcv1JPw0QSP8UARkzpbatehR2pR5xblscZVrnkUnYTHBIiSPjGjZXedLnmEcNqSQ5uFs/GmCQEPF3EOoED0qjHAg="
